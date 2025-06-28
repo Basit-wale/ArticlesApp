@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-weight: 500;
+  font-style: normal;
+  transition: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.icons {
+  color: #ffff;
+}

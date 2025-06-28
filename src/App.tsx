@@ -1,7 +1,16 @@
+import { Outlet } from "react-router-dom";
+import NavBar from "./components/navBar";
+
 const App = () => {
   return (
-    <main>
-      <h1 className="text-[250px] text-blue-300">HI</h1>
+    <main className="w-full h-[100vh] flex flex-col justify-between font-poppins text-zinc-800">
+      <div className="flex flex-col bg-black h-fit shadow-md">
+        <NavBar />
+      </div>
+
+      <div className="h-[85vh] overflow-y-auto">
+        <Outlet />
+      </div>
     </main>
   );
 };
