@@ -1,47 +1,28 @@
-import { IoBookOutline } from "react-icons/io5";
-import { FaRegEye } from "react-icons/fa";
-import { BiCategoryAlt } from "react-icons/bi";
-import { LuPencilLine } from "react-icons/lu";
+// import { IoBookOutline } from "react-icons/io5";
+// import { FaRegEye } from "react-icons/fa";
+// import { BiCategoryAlt } from "react-icons/bi";
+// import { LuPencilLine } from "react-icons/lu";
 
-interface CardProps {
-  type: "articles" | "views" | "categories" | "drafts";
-}
+import { FiBookOpen, FiEye, FiGrid, FiEdit2 } from "react-icons/fi";
 
-const Card = ({ type }: CardProps) => {
+const Card = () => {
   return (
-    <div className="w-[25%] h-32 rounded-md bg-gray-50 border-zinc-800 border-[1px] flex-col flex items-center justify-center">
-      {type === "articles" && (
-        <IoBookOutline className="text-4xl text-zinc-800" />
-      )}
-      {type === "views" && <FaRegEye className="text-4xl text-zinc-800" />}
-      {type === "categories" && (
-        <BiCategoryAlt className="text-4xl text-zinc-800" />
-      )}
-      {type === "drafts" && <LuPencilLine className="text-4xl text-zinc-800" />}
-      {type === "articles" && (
-        <p className="flex flex-col items-center justify-center mt-2">
-          <span className="text-base text-zinc-800">Total Articles</span>
-          <span className="text-xl text-orange-500">100</span>
-        </p>
-      )}
-      {type === "views" && (
-        <p className="flex flex-col items-center justify-center mt-2">
-          <span className="text-base text-zinc-800">Total Views</span>
-          <span className="text-xl text-orange-500">5000</span>
-        </p>
-      )}
-      {type === "categories" && (
-        <p className="flex flex-col items-center justify-center mt-2">
-          <span className="text-base text-zinc-800">Total Categories</span>
-          <span className="text-xl text-orange-500">20</span>
-        </p>
-      )}
-      {type === "drafts" && (
-        <p className="flex flex-col items-center justify-center mt-2">
-          <span className="text-base text-zinc-800">Total Drafts</span>
-          <span className="text-xl text-orange-500">5</span>
-        </p>
-      )}
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      {[
+        { icon: <FiBookOpen />, title: "Total Articles", value: 100 },
+        { icon: <FiEye />, title: "Total Views", value: 5000 },
+        { icon: <FiGrid />, title: "Total Categories", value: 20 },
+        { icon: <FiEdit2 />, title: "Total Drafts", value: 5 },
+      ].map(({ icon, title, value }) => (
+        <div
+          key={title}
+          className="bg-white shadow-lg hover:shadow-xl transition-shadow rounded-2xl p-6 border border-gray-100 flex flex-col items-center justify-center text-center"
+        >
+          <div className="text-3xl mb-2">{icon}</div>
+          <div className="text-sm text-gray-500">{title}</div>
+          <div className="text-2xl font-bold text-orange-500">{value}</div>
+        </div>
+      ))}
     </div>
   );
 };

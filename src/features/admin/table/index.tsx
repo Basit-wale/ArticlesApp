@@ -3,7 +3,7 @@ import { api, Post } from "../../../api/api";
 import { useQuery } from "@tanstack/react-query";
 import { useSearch } from "../../../context/searchContext";
 import Lottie from "lottie-react";
-import loadingAnimation from "../../../animations/Animation - 1749684317032.json";
+import loadingAnimation from "../../../components/animations/Animation - 1749684317032.json";
 
 const AdminTable = () => {
   const { searchText } = useSearch();
@@ -98,7 +98,7 @@ const AdminTable = () => {
             <tr key={index} className="hover:bg-gray-50">
               <td className="py-2 px-4 border-b">{uni.title}</td>
               <td className="py-2 px-4 border-b">
-                <span className="text-green-600 font-medium">{uni.status}</span>
+                <span className="text-blue-600 font-medium">{uni.status}</span>
               </td>
               <td className="py-2 px-4 border-b">2025-06-20</td>
               <td className="py-2 px-4 border-b">

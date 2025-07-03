@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useSearch } from "../../context/searchContext";
 import Lottie from "lottie-react";
-import loadingAnimation from "../../animations/Animation - 1749684317032.json";
+import loadingAnimation from "../../components/animations/Animation - 1749684317032.json";
 
 const HomeArticles: React.FC = () => {
   const { searchText, setSearchText } = useSearch();

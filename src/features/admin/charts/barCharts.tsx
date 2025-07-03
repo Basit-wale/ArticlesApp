@@ -24,7 +24,7 @@ export default function TopArticlesBarChart() {
           <XAxis dataKey="title" />
           <YAxis />
           <Tooltip />
-          <Bar dataKey="views" fill="#4f46e5" radius={[4, 4, 0, 0]} />
+          <Bar dataKey="views" fill="#1d4ed8" radius={[4, 4, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

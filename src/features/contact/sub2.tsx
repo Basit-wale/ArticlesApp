@@ -21,13 +21,13 @@ const Sub2 = () => {
           <div className="flex gap-3">
             <div className="w-1/2">
               <label className="text-sm">Name</label>
-              <div className="bg-[#06063f15] rounded-full h-8 content-center pl-3 text-[#142246]">
+              <div className="bg-[#06063f15] rounded-md content-center pl-4 py-2 text-[#142246]">
                 <Input onChange={() => ""} placeholder="Name" type="text" />
               </div>
             </div>
             <div className="w-1/2">
               <label className="text-sm">Phone</label>
-              <div className="bg-[#06063f15] rounded-full h-8 content-center pl-3 text-[#142246]">
+              <div className="bg-[#06063f15] rounded-md content-center pl-4 py-2 text-[#142246]">
                 <Input onChange={() => ""} placeholder="Phone" type="number" />
               </div>
             </div>
@@ -35,14 +35,14 @@ const Sub2 = () => {
 
           <div className="w-full">
             <label className="text-sm">Email</label>
-            <div className="bg-[#06063f15] rounded-full h-8 content-center pl-3 text-[#142246]">
+            <div className="bg-[#06063f15] rounded-md content-center pl-4 py-2 text-[#142246]">
               <Input onChange={() => ""} placeholder="Email" type="email" />
             </div>
           </div>
 
           <div className="w-full">
             <label className="text-sm">Message</label>
-            <div className="bg-[#06063f15] rounded-lg h-fit content-center px-3 pt-1 text-[#142246]">
+            <div className="bg-[#06063f15] rounded-md h-fit content-center pl-4 py-2 text-[#142246]">
               <TextArea placeholder="Message" />
             </div>
           </div>

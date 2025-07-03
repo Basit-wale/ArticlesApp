@@ -11,3 +11,10 @@
 .icons {
   color: #ffff;
 }
+
+.box {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  background-color: white;
+}

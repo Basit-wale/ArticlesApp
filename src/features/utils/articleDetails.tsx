@@ -3,7 +3,7 @@ import { api, Post } from "../../api/api";
 import img2 from "../../assets/img/pexels-pixabay-531880.jpg";
 import { useQuery } from "@tanstack/react-query";
 import { useState, useEffect } from "react";
-import loadingAnimation from "../../animations/Animation - 1749684317032.json";
+import loadingAnimation from "../../components/animations/Animation - 1749684317032.json";
 import Lottie from "lottie-react";
 
 const fetchPosts = async (): Promise<Post[]> => {

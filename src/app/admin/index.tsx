@@ -9,7 +9,8 @@ import TopArticlesBarChart from "../../features/admin/charts/barCharts";
 import { Link, useNavigate } from "react-router-dom";
 import { useAdmin } from "../../context/adminContext";
 import Lottie from "lottie-react";
-import loadingAnimation from "../../animations/Animation - 1749684317032.json";
+import loadingAnimation from "../../components/animations/Animation - 1749684317032.json";
+import { FaLongArrowAltLeft } from "react-icons/fa";
 
 const AdminDashboard = () => {
   const { searchText, setSearchText } = useSearch();
@@ -43,11 +44,8 @@ const AdminDashboard = () => {
             <img src={Img} alt="" className="h-48" />
           </div>
 
-          <div className="flex gap-4 w-full">
-            <Card type="articles" />
-            <Card type="views" />
-            <Card type="categories" />
-            <Card type="drafts" />
+          <div>
+            <Card />
           </div>
         </div>
         <div className="w-[30%] rounded-md h-[21em] flex justify-end pl-6">
@@ -56,7 +54,7 @@ const AdminDashboard = () => {
       </div>
 
       <div className="flex">
-        <div className="text-center text-sm w-[70%] p-2 capitalize rounded-md bg-gray-50 border-zinc-800 border-[1px]">
+        <div className="text-center text-sm w-[70%] p-2 capitalize rounded-md box">
           <p className="text-xl pb-6">Views over time</p>
           <ViewsChart />
         </div>
@@ -99,8 +97,9 @@ const AdminDashboard = () => {
             <h1 className="text-3xl font-bold">Welcome, {currentAdmin}!</h1>
             <button
               onClick={() => handleLogout()}
-              className="mt-4 bg-red-600 text-white p-2 rounded"
+              className="mt-4 bg-orange-600 text-white p-2 rounded flex items-center hover:bg-orange-700"
             >
+              <FaLongArrowAltLeft />
               Logout
             </button>
           </>
