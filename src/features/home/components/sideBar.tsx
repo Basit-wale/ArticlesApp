@@ -80,14 +80,18 @@ const SideBar = () => {
                       {isChildOpen === index ? (
                         <ul className="pl-1">
                           {li.childSubRoutes?.map((childList, index) => (
-                            <NavLink to={childList.path}>
-                              <li
-                                key={index}
-                                className="text-sm py-[0.1em] text-slate-600 calibri"
-                              >
-                                {childList.element}
-                              </li>
-                            </NavLink>
+                            <li
+                              key={childList.key ?? index}
+                              className="text-sm py-[0.1em] text-slate-600 calibri"
+                            >
+                              {"path" in childList && childList.path ? (
+                                <NavLink to={childList.path}>
+                                  {childList.element}
+                                </NavLink>
+                              ) : (
+                                childList.element
+                              )}
+                            </li>
                           ))}
                         </ul>
                       ) : (

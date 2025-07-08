@@ -1,4 +1,26 @@
-export const SideBarList = [
+interface SideBarChildRoute {
+  element: string;
+  key: string;
+}
+
+interface SideBarSubRoute {
+  path: string;
+  element: string;
+  childHasSubRoutes: boolean;
+  key: string;
+  childSubRoutes?: SideBarChildRoute[];
+}
+
+interface SideBarItem {
+  id: number;
+  element: string;
+  hasSubRoutes: boolean;
+  key: string;
+  path: string;
+  SubRoutes?: SideBarSubRoute[];
+}
+
+export const SideBarList: SideBarItem[] = [
   {
     id: 1,
     element: "Schools",
@@ -7,6 +29,7 @@ export const SideBarList = [
     path: "",
     SubRoutes: [
       {
+        path: "",
         element: "Universities",
         childHasSubRoutes: true,
         key: "",
@@ -30,6 +53,7 @@ export const SideBarList = [
         ],
       },
       {
+        path: "",
         element: "Polytechnics",
         childHasSubRoutes: false,
         key: "poly",
@@ -44,6 +68,7 @@ export const SideBarList = [
     path: "",
     SubRoutes: [
       {
+        path: "",
         element: "JAMB",
         childHasSubRoutes: true,
         key: "",
@@ -87,6 +112,7 @@ export const SideBarList = [
         ],
       },
       {
+        path: "",
         element: "WAEC",
         childHasSubRoutes: true,
         key: "",
@@ -114,6 +140,7 @@ export const SideBarList = [
         ],
       },
       {
+        path: "",
         element: "NECO",
         childHasSubRoutes: true,
         key: "",
@@ -133,6 +160,7 @@ export const SideBarList = [
         ],
       },
       {
+        path: "",
         element: "NABTEB",
         childHasSubRoutes: true,
         key: "",
@@ -152,6 +180,7 @@ export const SideBarList = [
         ],
       },
       {
+        path: "",
         element: "JUPEB",
         childHasSubRoutes: true,
         key: "",
@@ -171,6 +200,7 @@ export const SideBarList = [
         ],
       },
       {
+        path: "",
         element: "POSTUTME",
         childHasSubRoutes: true,
         key: "",
