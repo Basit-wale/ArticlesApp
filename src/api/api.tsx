@@ -10,5 +10,5 @@ export type Post = {
 };
 
 export const api = axios.create({
-  baseURL: "http://localhost:8000",
+  baseURL: "https://686db143c9090c495386fbc9.mockapi.io/articles",
 });

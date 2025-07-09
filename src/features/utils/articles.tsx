@@ -15,7 +15,7 @@ const HomeArticles: React.FC = () => {
   const [isLoadMoreLoading, setIsLoadMoreLoading] = useState<boolean>(false);
 
   const fetchPosts = async (): Promise<Post[]> => {
-    const res = await api.get(`/uni`);
+    const res = await api.get(`/articles`);
     return res.data;
   };
 
