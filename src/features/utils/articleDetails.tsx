@@ -59,7 +59,7 @@ const ArticlesDetails = () => {
       <img
         src={article.image}
         alt={article.title}
-        className="rounded-md object-cover w-full max-h-96"
+        className="rounded-md object-cover w-full max-h-[32em]"
       />
 
       <p>{article.body.slice(500, 1500)}</p>
