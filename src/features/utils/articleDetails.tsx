@@ -7,7 +7,7 @@ import loadingAnimation from "../../components/animations/Animation - 1749684317
 import Lottie from "lottie-react";
 
 const fetchPosts = async (): Promise<Post[]> => {
-  const res = await api.get("/uni");
+  const res = await api.get("/articles");
   return res.data;
 };
 
