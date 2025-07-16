@@ -19,7 +19,10 @@ export default function CreateArticlePage() {
 
   const createArticleMutation = useMutation({
     mutationFn: (newArticle: Article) =>
-      axios.post("http://localhost:8000/uni", newArticle),
+      axios.post(
+        "https://686db143c9090c495386fbc9.mockapi.io/articles/articles",
+        newArticle
+      ),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["articles"] });
       alert("Article created successfully!");

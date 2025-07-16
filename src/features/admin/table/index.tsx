@@ -9,7 +9,7 @@ const AdminTable = () => {
   const { searchText } = useSearch();
 
   const fetchPosts = async (): Promise<Post[]> => {
-    const res = await api.get(`/uni`);
+    const res = await api.get(`/articles`);
     return res.data;
   };
 
