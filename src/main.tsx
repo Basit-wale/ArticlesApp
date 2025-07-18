@@ -14,6 +14,7 @@ import CreateArticlePage from "./features/admin/util/newArticle/index.tsx";
 import AdminLogin from "./features/admin/auth/Login.tsx";
 import ProtectedRoute from "./features/admin/auth/ProtectedRoute.tsx";
 import { AdminProvider } from "./context/adminContext.tsx";
+import EditArticlePage from "./app/admin/[id]/index.tsx";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
       {
         path: "/adminLogin",
         element: <AdminLogin />,
+      },
+      {
+        path: "/admin/:id",
+        element: <EditArticlePage />,
       },
     ],
   },

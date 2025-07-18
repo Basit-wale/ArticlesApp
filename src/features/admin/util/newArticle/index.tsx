@@ -7,6 +7,8 @@ type Article = {
   title: string;
   body: string;
   image: string;
+  date: string;
+  createdAt?: string; // ISO date format
 };
 
 export default function CreateArticlePage() {
@@ -40,6 +42,8 @@ export default function CreateArticlePage() {
       title,
       body,
       image,
+      date: new Date().toISOString(),
+      createdAt: new Date().toISOString(), // add ISO date format
     });
   };
 

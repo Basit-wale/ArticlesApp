@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { api, Post } from "../../../api/api";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useSearch } from "../../../context/searchContext";
+import { useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import loadingAnimation from "../../../components/animations/Animation - 1749684317032.json";
 
 const AdminTable = () => {
   const { searchText } = useSearch();
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
 
   const fetchPosts = async (): Promise<Post[]> => {
     const res = await api.get(`/articles`);
@@ -27,12 +30,24 @@ const AdminTable = () => {
   const [visibleCount, setVisibleCount] = useState(10);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
 
+  const deleteMutation = useMutation({
+    mutationFn: (id: string) => api.delete(`/articles/${id}`),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
+    },
+  });
+
   useEffect(() => {
-    const filtered = posts.filter((post) =>
-      Object.values(post).some((value) =>
-        String(value).toLowerCase().includes(searchText.toLowerCase())
+    const filtered = posts
+      .filter((post) =>
+        post.title?.toLowerCase().includes(searchText.toLowerCase())
       )
-    );
+      .sort((a, b) => {
+        const dateA = new Date(a.createdAt || 0).getTime();
+        const dateB = new Date(b.createdAt || 0).getTime();
+        return dateB - dateA;
+      });
+
     setFilteredArticles(filtered);
     setVisibleCount(10);
   }, [posts, searchText]);
@@ -49,21 +64,14 @@ const AdminTable = () => {
     setVisibleCount(10);
   };
 
-  const handleDelete = (index: number) => {
+  const handleDelete = (id: string) => {
     if (confirm("Are you sure you want to delete this article?")) {
-      const updated = [...filteredArticles];
-      updated.splice(index, 1);
-      setFilteredArticles(updated);
+      deleteMutation.mutate(id);
     }
   };
 
-  const handleEdit = (index: number) => {
-    const newTitle = prompt("Enter new title:", filteredArticles[index].title);
-    if (newTitle !== null && newTitle.trim() !== "") {
-      const updated = [...filteredArticles];
-      updated[index].title = newTitle.trim();
-      setFilteredArticles(updated);
-    }
+  const handleEdit = (article: Post) => {
+    navigate(`/admin/${article.id}`);
   };
 
   if (isLoading) {
@@ -94,22 +102,30 @@ const AdminTable = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredArticles.slice(0, visibleCount).map((uni, index) => (
-            <tr key={index} className="hover:bg-gray-50">
-              <td className="py-2 px-4 border-b">{uni.title}</td>
+          {filteredArticles.slice(0, visibleCount).map((uni) => (
+            <tr key={uni.id} className="hover:bg-gray-50">
+              <td className="py-2 px-4 border-b">{uni.title || "Untitled"}</td>
               <td className="py-2 px-4 border-b">
-                <span className="text-blue-600 font-medium">{uni.status}</span>
+                <span className="text-blue-600 font-medium">
+                  {uni.status || "Unknown"}
+                </span>
               </td>
-              <td className="py-2 px-4 border-b">2025-06-20</td>
+              <td className="py-2 px-4 border-b">
+                {uni.createdAt
+                  ? new Date(uni.createdAt).toLocaleDateString()
+                  : uni.date
+                  ? new Date(uni.date).toLocaleDateString()
+                  : "N/A"}
+              </td>
               <td className="py-2 px-4 border-b">
                 <button
-                  onClick={() => handleEdit(index)}
+                  onClick={() => handleEdit(uni)}
                   className="text-blue-600 hover:underline mr-2"
                 >
                   Edit
                 </button>
                 <button
-                  onClick={() => handleDelete(index)}
+                  onClick={() => handleDelete(String(uni.id))}
                   className="text-orange-700 hover:underline"
                 >
                   Delete

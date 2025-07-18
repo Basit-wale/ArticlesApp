@@ -1,12 +1,13 @@
 import axios from "axios";
 
 export type Post = {
-  id: number;
+  id: string;
   title: string;
   body: string;
   image: string;
   status: string;
-  date: string;
+  date?: string;
+  createdAt?: string;
 };
 
 export const api = axios.create({

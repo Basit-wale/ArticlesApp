@@ -35,8 +35,8 @@ const HomeArticles: React.FC = () => {
       const sortedAndFiltered = posts
         .slice()
         .sort((a, b) => {
-          const dateA = new Date(a.date).getTime();
-          const dateB = new Date(b.date).getTime();
+          const dateA = new Date(a.date ?? 0).getTime();
+          const dateB = new Date(b.date ?? 0).getTime();
           return dateB - dateA; // latest first
         })
         .filter((post) =>
